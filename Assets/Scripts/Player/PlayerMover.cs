@@ -33,7 +33,7 @@ public class PlayerMover : MonoBehaviour
         transform.position += direction;
     }
 
-    public void Rotation(float directionX)
+    public void Rotate(float directionX)
     {
         _sprite.flipX = directionX < 0 && _isFacingRight;
     }

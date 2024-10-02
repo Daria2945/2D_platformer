@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         if (_inputReader.DirectionX != 0)
         {
             _mover.Move(_inputReader.DirectionX);
-            _mover.Rotation(_inputReader.DirectionX);
+            _mover.Rotate(_inputReader.DirectionX);
         }
 
         if (_inputReader.GetIsJump())
@@ -39,7 +39,10 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out Coin _))
+        if (collision.gameObject.TryGetComponent(out Coin coin))
+        {
+            coin.Collect();
             _wallet.CollectCoin();
+        }
     }
 }
