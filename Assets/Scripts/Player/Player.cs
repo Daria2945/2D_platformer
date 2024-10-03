@@ -1,12 +1,13 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMover), typeof(InputReader), typeof(PlayerAnimator))]
-[RequireComponent(typeof(Wallet))]
+[RequireComponent(typeof(Wallet), typeof(CollisionDetector))]
 public class Player : MonoBehaviour
 {
     private PlayerMover _mover;
     private InputReader _inputReader;
     private Wallet _wallet;
+    private CollisionDetector _collisionDetector;
 
     private PlayerAnimator _animation;
 
@@ -16,11 +17,15 @@ public class Player : MonoBehaviour
         _inputReader = GetComponent<InputReader>();
         _animation = GetComponent<PlayerAnimator>();
         _wallet = GetComponent<Wallet>();
+        _collisionDetector = GetComponent<CollisionDetector>();
     }
 
     private void Update()
     {
         _animation.PlayRunningAnimation(_inputReader.DirectionX);
+
+        if (_collisionDetector.IsCoinFound)
+            CollectCoin();
     }
 
     private void FixedUpdate()
@@ -37,12 +42,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void CollectCoin()
     {
-        if (collision.gameObject.TryGetComponent(out Coin coin))
-        {
-            coin.Collect();
-            _wallet.CollectCoin();
-        }
+        _wallet.CollectCoin();
     }
 }

@@ -3,17 +3,30 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Coin : MonoBehaviour
 {
-    public bool IsCollected {  get; private set; } = false;
+    public bool HasTriggered { get; private set; }
 
-    public void ResetCollect()
+    private void Awake()
     {
-        IsCollected = false;
+        Hide();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.TryGetComponent(out Player _))
+        {
+            Hide();
+        }
+    }
+
+    public void ResetTrigger()
+    {
+        HasTriggered = false;
         gameObject.SetActive(true);
     }
 
-    public void Collect()
+    private void Hide()
     {
-        IsCollected = true;
+        HasTriggered = true;
         gameObject.SetActive(false);
     }
 }

@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 341936043}
   - component: {fileID: 341936042}
   - component: {fileID: 341936048}
+  - component: {fileID: 341936049}
   m_Layer: 0
   m_Name: Lil Wiz
   m_TagString: Untagged
@@ -588,6 +589,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be9fe71c493626740a075d4e2e0cfd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &341936049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341936034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52dbf3bc0dcb9f74f985b7abf02a8983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &413360494
@@ -835,7 +848,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e1d0181f0f1394a8e0246d191e47d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawner: {fileID: 567023511}
+  _spawnerPoints:
+  - {fileID: 253372487}
+  - {fileID: 1319890620}
+  - {fileID: 4743704}
+  - {fileID: 413360496}
   _spawnDelay: 2
 --- !u!4 &567023511
 Transform:
@@ -1081,6 +1098,18 @@ PrefabInstance:
       propertyPath: _route
       value: 
       objectReference: {fileID: 2026254469}
+    - target: {fileID: 8931860615232690993, guid: 75757ca6da060f749a46c7ca167d186e, type: 3}
+      propertyPath: _route.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8931860615232690993, guid: 75757ca6da060f749a46c7ca167d186e, type: 3}
+      propertyPath: _route.Array.data[0]
+      value: 
+      objectReference: {fileID: 991663802}
+    - target: {fileID: 8931860615232690993, guid: 75757ca6da060f749a46c7ca167d186e, type: 3}
+      propertyPath: _route.Array.data[1]
+      value: 
+      objectReference: {fileID: 2109784011}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2486,6 +2515,18 @@ PrefabInstance:
       propertyPath: _route
       value: 
       objectReference: {fileID: 559806601}
+    - target: {fileID: 280637444324797075, guid: cc599e4910493354395feb52899c2757, type: 3}
+      propertyPath: _route.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 280637444324797075, guid: cc599e4910493354395feb52899c2757, type: 3}
+      propertyPath: _route.Array.data[0]
+      value: 
+      objectReference: {fileID: 1625160664}
+    - target: {fileID: 280637444324797075, guid: cc599e4910493354395feb52899c2757, type: 3}
+      propertyPath: _route.Array.data[1]
+      value: 
+      objectReference: {fileID: 935228163}
     - target: {fileID: 2655403436685305806, guid: cc599e4910493354395feb52899c2757, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2591,6 +2632,18 @@ PrefabInstance:
       propertyPath: _route
       value: 
       objectReference: {fileID: 1260798202}
+    - target: {fileID: 8931860615232690993, guid: 75757ca6da060f749a46c7ca167d186e, type: 3}
+      propertyPath: _route.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8931860615232690993, guid: 75757ca6da060f749a46c7ca167d186e, type: 3}
+      propertyPath: _route.Array.data[0]
+      value: 
+      objectReference: {fileID: 745514388}
+    - target: {fileID: 8931860615232690993, guid: 75757ca6da060f749a46c7ca167d186e, type: 3}
+      propertyPath: _route.Array.data[1]
+      value: 
+      objectReference: {fileID: 1412001332}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

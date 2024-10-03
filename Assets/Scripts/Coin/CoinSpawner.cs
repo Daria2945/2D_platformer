@@ -3,28 +3,12 @@ using UnityEngine;
 
 public class CoinSpawner : MonoBehaviour
 {
-    [SerializeField] private Transform _spawner;
+    [SerializeField] private CoinSpawnPoint[] _spawnerPoints;
     [SerializeField] private float _spawnDelay = 2;
-
-    private CoinSpawnPoint[] _spawnerPoints;
 
     private void Awake()
     {
-        _spawnerPoints = GetPoints();
         StartCoroutine(Spawn());
-    }
-
-    private CoinSpawnPoint[] GetPoints()
-    {
-        CoinSpawnPoint[] spawnerPoints = new CoinSpawnPoint[_spawner.childCount];
-
-        for (int i = 0; i < spawnerPoints.Length; i++)
-        {
-            if (_spawner.GetChild(i).TryGetComponent(out CoinSpawnPoint _))
-                spawnerPoints[i] = _spawner.GetChild(i).GetComponent<CoinSpawnPoint>();
-        }
-
-        return spawnerPoints;
     }
 
     private IEnumerator Spawn()
@@ -38,7 +22,7 @@ public class CoinSpawner : MonoBehaviour
             int index = Random.Range(0, _spawnerPoints.Length);
 
             if (_spawnerPoints[index].IsFreePoint)
-                _spawnerPoints[index].Spawn();
+                _spawnerPoints[index].ShowCoin();
         }
     }
 }
