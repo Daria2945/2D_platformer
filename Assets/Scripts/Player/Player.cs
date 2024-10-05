@@ -23,9 +23,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         _animation.PlayRunningAnimation(_inputReader.DirectionX);
-
-        if (_collisionDetector.IsCoinFound)
-            CollectCoin();
     }
 
     private void FixedUpdate()
@@ -42,8 +39,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void CollectCoin()
+    private void OnEnable()
     {
+        _collisionDetector.IsCoinFound += CollectCoin;
+    }
+
+    private void OnDisable()
+    {
+        _collisionDetector.IsCoinFound -= CollectCoin;
+    }
+
+    private void CollectCoin(Coin coin)
+    {
+        coin.Collect();
         _wallet.CollectCoin();
     }
 }

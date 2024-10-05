@@ -3,30 +3,22 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Coin : MonoBehaviour
 {
-    public bool HasTriggered { get; private set; }
+    public bool IsHadden { get; private set; }
 
     private void Awake()
     {
-        Hide();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.TryGetComponent(out Player _))
-        {
-            Hide();
-        }
+        Collect();
     }
 
     public void ResetTrigger()
     {
-        HasTriggered = false;
+        IsHadden = false;
         gameObject.SetActive(true);
     }
 
-    private void Hide()
+    public void Collect()
     {
-        HasTriggered = true;
+        IsHadden = true;
         gameObject.SetActive(false);
     }
 }

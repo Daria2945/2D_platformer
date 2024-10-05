@@ -1,18 +1,18 @@
 using UnityEngine;
 
-[RequireComponent(typeof(GroundDetector))]
 public class InputReader : MonoBehaviour
 {
     private const string Horizontal = nameof(Horizontal);
 
-    private GroundDetector _groundDetector;
+    [SerializeField] private GroundDetector _groundDetector;
+
+    private KeyCode _jumpKey = KeyCode.Space;
     private bool _isJump;
 
     public float DirectionX {  get; private set; }
 
     private void Awake()
     {
-        _groundDetector = GetComponent<GroundDetector>();
         _isJump = false;
     }
 
@@ -20,7 +20,7 @@ public class InputReader : MonoBehaviour
     {
         DirectionX = Input.GetAxis(Horizontal);
 
-        if (Input.GetKeyDown(KeyCode.Space) && _groundDetector.IsGround)
+        if (Input.GetKeyDown(_jumpKey) && _groundDetector.GetIsGround())
             _isJump = true;
     }
 

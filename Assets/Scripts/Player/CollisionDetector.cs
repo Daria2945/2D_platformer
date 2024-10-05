@@ -1,23 +1,15 @@
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Wallet))]
 public class CollisionDetector : MonoBehaviour
 {
-    public bool IsCoinFound {  get; private set; }
+    public event Action<Coin> IsCoinFound;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out Coin _))
+        if (collision.gameObject.TryGetComponent(out Coin _coin))
         {
-            IsCoinFound = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out Coin _))
-        {
-            IsCoinFound = false;
+            IsCoinFound?.Invoke(_coin);
         }
     }
 }

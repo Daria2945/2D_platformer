@@ -1,20 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GroundDetector : MonoBehaviour
 {
-    public bool IsGround {  get; private set; }
+    [SerializeField] private float _detectorRadius = 0.2f;
+    [SerializeField] private LayerMask _groundLayerMask;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public bool GetIsGround()
     {
-        if(collision.gameObject.TryGetComponent(out Ground _))
-            IsGround = true;
-    }
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, _detectorRadius, _groundLayerMask);
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out Ground _))
-            IsGround = false;
+        return hit != null && hit.TryGetComponent(out Ground _);
     }
 }
