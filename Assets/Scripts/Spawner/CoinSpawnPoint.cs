@@ -6,7 +6,7 @@ public class CoinSpawnPoint : MonoBehaviour
 
     private Coin _coin;
 
-    public bool IsFreePoint => _coin.IsHadden;
+    public bool IsFreePoint => _coin.IsHidden;
 
     private void Awake()
     {
@@ -15,6 +15,6 @@ public class CoinSpawnPoint : MonoBehaviour
 
     public void ShowCoin()
     {
-        _coin.ResetTrigger();
+        _coin.Show();
     }
 }

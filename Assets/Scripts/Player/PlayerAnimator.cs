@@ -3,8 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimator : MonoBehaviour
 {
-    private static int s_inputHorizontal = Animator.StringToHash("InputHorizontal");
-
+    private int _inputHorizontal = Animator.StringToHash("InputHorizontal");
     private Animator _animator;
 
     private void Awake()
@@ -14,6 +13,6 @@ public class PlayerAnimator : MonoBehaviour
 
     public void PlayRunningAnimation(float inputHorizontal)
     {
-        _animator.SetFloat(s_inputHorizontal, Mathf.Abs(inputHorizontal));
+        _animator.SetFloat(_inputHorizontal, Mathf.Abs(inputHorizontal));
     }
 }

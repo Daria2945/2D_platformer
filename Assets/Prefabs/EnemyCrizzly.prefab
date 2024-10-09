@@ -44,8 +44,6 @@ GameObject:
   - component: {fileID: 536586302256831176}
   - component: {fileID: 3116361958886923933}
   - component: {fileID: 3110419723814726773}
-  - component: {fileID: 280637444324797075}
-  - component: {fileID: 3676931653876050954}
   - component: {fileID: 1141392017051765030}
   m_Layer: 0
   m_Name: Grizzly
@@ -169,32 +167,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &280637444324797075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3781522802261461843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b29fc9337dd0c874ca0f4c4f954bdcaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 2.25
-  _route: {fileID: 0}
---- !u!114 &3676931653876050954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3781522802261461843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa73c340b162fd45aa36dee36880347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1141392017051765030
 BoxCollider2D:
   m_ObjectHideFlags: 0

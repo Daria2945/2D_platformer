@@ -1,40 +1,49 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private Transform _startPosition;
-    [SerializeField] private float _speedMove = 2.5f;
-    [SerializeField] private float _jumpForce = 450f;
+    [SerializeField] private float _speedMove = 200f;
+    [SerializeField] private float _jumpForce = 400f;
 
     private Rigidbody2D _rigidbody;
-    private SpriteRenderer _sprite;
+    private Transform _transform;
 
     private bool _isFacingRight = true;
 
     private void Awake()
     {
-        transform.position = _startPosition.position;
+        _transform = transform;
+
+        _transform.position = _startPosition.position;
         _rigidbody = GetComponent<Rigidbody2D>();
-        _sprite = GetComponent<SpriteRenderer>();
     }
 
     public void Jump()
     {
-        Vector2 forse = new(0, _jumpForce);
-
-        _rigidbody.AddForce(forse);
+        _rigidbody.AddForce(Vector2.up * _jumpForce);
     }
 
     public void Move(float directionX)
     {
-        Vector3 direction = new(directionX * _speedMove * Time.fixedDeltaTime, 0, 0);
-
-        transform.position += direction;
+        _rigidbody.velocity = new Vector2(directionX * _speedMove * Time.fixedDeltaTime, _rigidbody.velocity.y);
     }
 
     public void Rotate(float directionX)
     {
-        _sprite.flipX = directionX < 0 && _isFacingRight;
+        float YAxisRotationAngle = 180f;
+
+        if (directionX < 0 && _isFacingRight)
+        {
+            transform.Rotate(0, YAxisRotationAngle, 0);
+            _isFacingRight = false;
+        }
+
+        if (directionX > 0 && _isFacingRight == false)
+        {
+            transform.Rotate(0, YAxisRotationAngle, 0);
+            _isFacingRight = true;
+        }
     }
 }

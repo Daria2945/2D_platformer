@@ -4,12 +4,15 @@ using UnityEngine;
 [RequireComponent(typeof(Wallet), typeof(CollisionDetector))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private GroundDetector _groundDetector;
+
     private PlayerMover _mover;
     private InputReader _inputReader;
     private Wallet _wallet;
     private CollisionDetector _collisionDetector;
-
     private PlayerAnimator _animation;
+
+    private bool _isGrounded;
 
     private void Awake()
     {
@@ -22,6 +25,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        _isGrounded = _groundDetector.CanFindGround();
+
         _animation.PlayRunningAnimation(_inputReader.DirectionX);
     }
 
@@ -33,7 +38,7 @@ public class Player : MonoBehaviour
             _mover.Rotate(_inputReader.DirectionX);
         }
 
-        if (_inputReader.GetIsJump())
+        if (_inputReader.CanJump() && _isGrounded)
         {
             _mover.Jump();
         }
@@ -41,12 +46,12 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        _collisionDetector.IsCoinFound += CollectCoin;
+        _collisionDetector.CoinFound += CollectCoin;
     }
 
     private void OnDisable()
     {
-        _collisionDetector.IsCoinFound -= CollectCoin;
+        _collisionDetector.CoinFound -= CollectCoin;
     }
 
     private void CollectCoin(Coin coin)

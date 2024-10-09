@@ -13,6 +13,6 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         _mover.Move();
-        _mover.Rotation();
+        _mover.Rotate();
     }
 }
