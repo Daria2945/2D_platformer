@@ -5,6 +5,9 @@ public class CoinSpawner : MonoBehaviour
 {
     [SerializeField] private CoinSpawnPoint[] _spawnerPoints;
     [SerializeField] private float _spawnDelay = 2;
+    [SerializeField] private int _maxCoinsPerLevel = 20;
+
+    private int _numberOfCoinsGreated;
 
     private void Awake()
     {
@@ -15,7 +18,7 @@ public class CoinSpawner : MonoBehaviour
     {
         var wait = new WaitForSecondsRealtime(_spawnDelay);
 
-        while (true)
+        while (_numberOfCoinsGreated < _maxCoinsPerLevel)
         {
             yield return wait;
 
@@ -23,6 +26,8 @@ public class CoinSpawner : MonoBehaviour
 
             if (_spawnerPoints[index].IsFreePoint)
                 _spawnerPoints[index].ShowCoin();
+
+            _numberOfCoinsGreated++;
         }
     }
 }

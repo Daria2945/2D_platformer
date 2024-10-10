@@ -12,8 +12,6 @@ public class Player : MonoBehaviour
     private CollisionDetector _collisionDetector;
     private PlayerAnimator _animation;
 
-    private bool _isGrounded;
-
     private void Awake()
     {
         _mover = GetComponent<PlayerMover>();
@@ -25,8 +23,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        _isGrounded = _groundDetector.CanFindGround();
-
         _animation.PlayRunningAnimation(_inputReader.DirectionX);
     }
 
@@ -38,7 +34,7 @@ public class Player : MonoBehaviour
             _mover.Rotate(_inputReader.DirectionX);
         }
 
-        if (_inputReader.CanJump() && _isGrounded)
+        if (_inputReader.CanJump() && _groundDetector.IsGrounded)
         {
             _mover.Jump();
         }
@@ -56,7 +52,7 @@ public class Player : MonoBehaviour
 
     private void CollectCoin(Coin coin)
     {
-        coin.Collect();
+        coin.Hide();
         _wallet.CollectCoin();
     }
 }

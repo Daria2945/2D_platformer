@@ -7,7 +7,7 @@ public class Coin : MonoBehaviour
 
     private void Awake()
     {
-        Collect();
+        Hide();
     }
 
     public void Show()
@@ -16,7 +16,7 @@ public class Coin : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void Collect()
+    public void Hide()
     {
         IsHidden = true;
         gameObject.SetActive(false);

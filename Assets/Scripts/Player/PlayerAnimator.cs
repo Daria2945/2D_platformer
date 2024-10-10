@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimator : MonoBehaviour
 {
-    private int _inputHorizontal = Animator.StringToHash("InputHorizontal");
+    private readonly int _inputHorizontal = Animator.StringToHash("InputHorizontal");
     private Animator _animator;
 
     private void Awake()

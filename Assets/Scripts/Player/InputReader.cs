@@ -9,11 +9,6 @@ public class InputReader : MonoBehaviour
 
     public float DirectionX {  get; private set; }
 
-    private void Awake()
-    {
-        _isJump = false;
-    }
-
     private void Update()
     {
         DirectionX = Input.GetAxis(Horizontal);

@@ -27,7 +27,6 @@ public class EnemyMover : MonoBehaviour
             _currentPoint = ++_currentPoint % _route.Length;
 
         _transform.position = Vector3.MoveTowards(_transform.position, _route[_currentPoint].position, _speed * Time.deltaTime);
-        
     }
 
     public void Rotate()
